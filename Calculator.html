@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<div class="row">
+    <div>
+        <label for="firstnum"></label>
+        <input id="firstnum" name="first_num" type="number" placeholder="Enter Number">
+    </div>
+</div>
+    <div>
+        <label for="container"></label>
+        <select name="container" id="container">
+            <option value="picker"> </option>
+            <option value="Multiply" id="times">Multiply</option>
+            <option value="Divide" id="divide">Divide</option>
+            <option value="Add" id="add">Add</option>
+            <option value="Subtract" id="sub">Subtract</option>
+            <option value="Remainder" id="remainder">Remainder</option>
+            <option value="Square" id="Sqare">Sqare</option>
+        </select>
+    </div>
+    <div>
+        <label for="lastnum"></label>
+        <input id="lastnum" name="last_num" type="number" placeholder="Enter Number">
+    </div>
+    <div>
+        <input id="answer" name="answer" type="number" placeholder="Your Answer">
+    </div>
+<button id="calculate">Calculate</button>
+<button name="clear">Clear</button>
+<div id="history">
+
+</div>
+<script>
+
+
+const clearbutton = document.querySelector(`[name="clear"]`);
+const firstnumber = document.getElementById('firstnum');
+const lastnumber = document.getElementById('lastnum');
+const answer = document.getElementById('answer');
+const calculate = document.getElementById(`calculate`);
+const history = document.getElementById('history');
+const container = document.getElementById("container");
+answer.addEventListener('change', function (e) {
+
+})
+
+    clearbutton.addEventListener('click', function (e) {
+        firstnumber.value= "";
+        lastnumber.value= "";
+        answer.value= "";
+        history.value= "";
+    })
+
+calculate.addEventListener('click', function (e) {
+    let firstnum = +firstnumber.value;
+    let lastnum = +lastnumber.value;
+    let sim = container.value;
+    let answer = document.createElement("p");
+
+    if (sim == "Add") {
+        answer.innerHTML = `${firstnum}+${lastnum} =${firstnum + lastnum}`;
+        history.appendChild(answer);
+    } else if (sim == "Subtract") {
+        answer.innerHTML = `${firstnum}-${lastnum} =${firstnum - lastnum}`;
+        history.appendChild(answer);
+    } else if (sim == "Multiply") {
+        answer.innerHTML = `${firstnum}*${lastnum} =${firstnum * lastnum}`;
+        history.appendChild(answer);
+    } else if (sim == "Divide") {
+        answer.innerHTML = `${firstnum}/${lastnum} =${firstnum / lastnum}`;
+        history.appendChild(answer);
+    } else if (sim=="Remainder") {
+        answer.innerHTML = `${firstnum}%${lastnum} =${firstnum % lastnum}`;
+        history.appendChild(answer)
+    } else if (sim=="Square") {
+        answer.innerHTML = `${firstnum}*${firstnum} =${firstnum * firstnum}`;
+        history.appendChild(answer)
+    }
+
+
+    firstnumber.value = "";
+    lastnumber.value = "";
+
+})
+</script>
+
+
+</body>
+</html>
